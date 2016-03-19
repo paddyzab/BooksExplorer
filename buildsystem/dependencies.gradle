@@ -1,0 +1,49 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    // Android
+    androidBuildToolsVersion = "23.0.1"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+
+    // Libraries
+    daggerVersion = '2.0.2'
+    butterKnifeVersion = '7.0.1'
+    rxJavaVersion = '1.1.0'
+    javaxVersion = '1.0'
+    androidSupportVersion = '23.1.1'
+
+    // Testing
+    festAssertVersion = '1.1.1'
+    mockitoVersion = '1.10.19'
+    espressoVersion = '2.2.1'
+    androidTestingSupport = '0.4'
+    jUnitVersion = '4.12'
+
+    presentationDependencies = [
+            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger         : "com.google.dagger:dagger:${daggerVersion}",
+            butterKnife    : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            recyclerView   : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+            appcompat      : "com.android.support:appcompat-v7:${androidSupportVersion}",
+            design         : "com.android.support:design:${androidSupportVersion}",
+            rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid      : "io.reactivex:rxandroid:${rxJavaVersion}",
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxVersion}",
+    ]
+
+    presentationTestDependencies = [
+            mockito      : "org.mockito:mockito-core:${mockitoVersion}",
+            espresso     : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            supportRunner: "com.android.support.test:rules:${androidTestingSupport}",
+            supportRules : "com.android.support.test:rules:${androidTestingSupport}",
+            supportAnnotations: "com.android.support:support-annotations:${androidSupportVersion}",
+            festAssert   : "com.squareup.assertj:assertj-android:${festAssertVersion}",
+            junit        : "junit:junit:${jUnitVersion}",
+    ]
+}
