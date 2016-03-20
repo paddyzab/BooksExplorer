@@ -6,5 +6,5 @@ public interface BooksListView {
 
     void populateItems(Book[] books);
 
-    void openBookDetails();
+    void openBookDetails(final String itemId);
 }

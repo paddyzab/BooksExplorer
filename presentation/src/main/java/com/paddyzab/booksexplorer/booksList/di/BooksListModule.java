@@ -17,23 +17,22 @@ public class BooksListModule {
     private final BooksListActivity mBooksListActivity;
 
     public BooksListModule(BooksListActivity booksListActivity) {
-       mBooksListActivity = booksListActivity;
+        mBooksListActivity = booksListActivity;
     }
 
-    @Singleton
     @Provides
     BooksListActivity provideBooksListActivity() {
         return mBooksListActivity;
     }
 
     @Provides
-    BooksListPresenter provideBookListPresenter(BooksListActivity booksListActivity,
-                                                GoogleBooksService googleBooksService) {
+    BooksListPresenter provideBookListPresenter(final BooksListActivity booksListActivity,
+                                                final GoogleBooksService googleBooksService) {
         return new BooksListPresenter(booksListActivity, googleBooksService);
     }
 
     @Provides
-    BooksAdapter providesBooksAdapter() {
-        return new BooksAdapter();
+    BooksAdapter providesBooksAdapter(final BooksListActivity booksListActivity) {
+        return new BooksAdapter(booksListActivity);
     }
 }

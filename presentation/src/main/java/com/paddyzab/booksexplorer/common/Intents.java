@@ -16,7 +16,7 @@ public class Intents {
     /**
      * Argument tag to describe Bundle for Book Details Activity.
      */
-    public final static String TRADE_ARGS = "arg_trade";
+    public final static String BOOK_DETAILS_ARGS = "arg_book_details";
 
     /**
      * Method to start BookDetailsActivity.
@@ -28,7 +28,7 @@ public class Intents {
         final Bundle bundle = new Bundle();
         bundle.putString(BOOK_ID, bookId);
         final Intent intent = new Intent(context, BookDetailsActivity.class);
-        intent.putExtra(TRADE_ARGS, bundle);
+        intent.putExtra(BOOK_DETAILS_ARGS, bundle);
 
         context.startActivity(intent);
     }

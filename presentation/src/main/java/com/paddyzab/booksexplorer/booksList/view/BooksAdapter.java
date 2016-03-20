@@ -2,6 +2,7 @@ package com.paddyzab.booksexplorer.booksList.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,9 +23,11 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
 
     private List<Book> mBooks;
     private Context mContext;
+    private OnCardClickedListener mCardClickedListener;
 
-    public BooksAdapter() {
+    public BooksAdapter(OnCardClickedListener cardClickedListener) {
         mBooks = new ArrayList<>();
+        mCardClickedListener = cardClickedListener;
     }
 
     public void setBookItems(Book[] books) {
@@ -50,11 +53,23 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     public void onBindViewHolder(final BooksViewHolder holder, final int position) {
         final Book bookItem = mBooks.get(position);
 
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                mCardClickedListener.onCardClicked(bookItem.id);
+            }
+        });
         holder.title.setText(bookItem.volumeInfo.title);
         holder.publishDate.setText(bookItem.volumeInfo.publishedDate);
         holder.publisher.setText(bookItem.volumeInfo.publisher);
         populateAuthor(bookItem, holder.author);
         loadThumbnail(bookItem, holder.thumbnail);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mBooks.size();
     }
 
     private void populateAuthor(final Book bookItem, final TextView author) {
@@ -71,13 +86,9 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
         Picasso.with(mContext).load(bookItem.volumeInfo.imageLinks.thumbnail).into(thumbnail);
     }
 
-    @Override
-    public int getItemCount() {
-        return mBooks.size();
-    }
-
     public static class BooksViewHolder extends RecyclerView.ViewHolder {
 
+        final CardView card;
         final TextView title;
         final TextView author;
         final TextView publisher;
@@ -87,11 +98,16 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
         public BooksViewHolder(View adapterView) {
             super(adapterView);
 
+            card = (CardView) adapterView.findViewById(R.id.cardViewBook);
             title = (TextView) adapterView.findViewById(R.id.textViewTitle);
             author = (TextView) adapterView.findViewById(R.id.textViewAuthor);
             publisher = (TextView) adapterView.findViewById(R.id.textViewPublisher);
             publishDate = (TextView) adapterView.findViewById(R.id.textViewPublishDate);
             thumbnail = (ImageView) adapterView.findViewById(R.id.imageViewThumbnail);
         }
+    }
+
+    public interface OnCardClickedListener {
+        void onCardClicked(String itemId);
     }
 }

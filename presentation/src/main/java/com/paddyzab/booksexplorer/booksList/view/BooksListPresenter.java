@@ -36,8 +36,8 @@ public class BooksListPresenter implements Presenter {
 
     }
 
-    public void openDetails() {
-//        mBooksListView.openBookDetails();
+    public void openDetails(final String itemId) {
+        mBooksListView.openBookDetails(itemId);
     }
 
     public void fetchItems(int index) {

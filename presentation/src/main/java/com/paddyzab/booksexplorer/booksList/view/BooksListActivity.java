@@ -16,9 +16,8 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class BooksListActivity extends InjectingActivity implements BooksListView {
+public class BooksListActivity extends InjectingActivity implements BooksListView, BooksAdapter.OnCardClickedListener {
 
     @Inject
     protected Intents mIntents;
@@ -32,12 +31,6 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     @Bind(R.id.recyclerViewBooks)
     protected RecyclerView mRecyclerViewBooks;
 
-    @OnClick(R.id.buttonDetails)
-    protected void openDetails() {
-        mBooksListPresenter.openDetails();
-    }
-
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +41,14 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
         mRecyclerViewBooks.setHasFixedSize(true);
         mRecyclerViewBooks.setLayoutManager(layoutManager);
         mRecyclerViewBooks.setAdapter(mBooksAdapter);
-        mRecyclerViewBooks.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
+        mRecyclerViewBooks.addOnScrollListener(new EndlessRecyclerViewScrollListener
+                (layoutManager) {
             @Override
             public void onLoadMore(final int page, final int totalItemsCount) {
                 mBooksListPresenter.fetchItems(mBooksAdapter.getItemCount());
             }
         });
+
     }
 
     @Override
@@ -80,8 +75,13 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     }
 
     @Override
-    public void openBookDetails() {
-        mIntents.startBookDetailsActivity(this, "bookId");
+    public void onCardClicked(String itemId) {
+        mBooksListPresenter.openDetails(itemId);
+    }
+
+    @Override
+    public void openBookDetails(final String itemId) {
+        mIntents.startBookDetailsActivity(this, itemId);
     }
 
     @Override
