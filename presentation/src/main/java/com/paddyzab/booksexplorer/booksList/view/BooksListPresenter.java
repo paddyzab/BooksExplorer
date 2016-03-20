@@ -40,7 +40,7 @@ public class BooksListPresenter implements Presenter {
 //        mBooksListView.openBookDetails();
     }
 
-    private void fetchItems(int index) {
+    public void fetchItems(int index) {
         Call<ItemsResponse> science = mGoogleBooksService.listItems("science", index, 40);
         science.enqueue(new Callback<ItemsResponse>() {
             @Override

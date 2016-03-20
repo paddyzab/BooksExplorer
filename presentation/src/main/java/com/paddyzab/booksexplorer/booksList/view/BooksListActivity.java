@@ -1,6 +1,5 @@
 package com.paddyzab.booksexplorer.booksList.view;
 
-import android.net.LinkAddress;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +9,7 @@ import com.paddyzab.booksexplorer.booksList.di.BooksListModule;
 import com.paddyzab.booksexplorer.common.BookExplorerApplication;
 import com.paddyzab.booksexplorer.common.InjectingActivity;
 import com.paddyzab.booksexplorer.common.Intents;
-import com.paddyzab.googlebooksapi.GoogleBooksService;
+import com.paddyzab.booksexplorer.common.views.EndlessRecyclerViewScrollListener;
 import com.paddyzab.googlebooksapi.models.Book;
 
 import javax.inject.Inject;
@@ -45,10 +44,16 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
         setContentView(R.layout.activity_books_list);
         ButterKnife.bind(this);
 
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerViewBooks.setHasFixedSize(true);
         mRecyclerViewBooks.setLayoutManager(layoutManager);
         mRecyclerViewBooks.setAdapter(mBooksAdapter);
+        mRecyclerViewBooks.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(final int page, final int totalItemsCount) {
+                mBooksListPresenter.fetchItems(mBooksAdapter.getItemCount());
+            }
+        });
     }
 
     @Override
