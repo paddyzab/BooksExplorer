@@ -1,6 +1,7 @@
 package com.paddyzab.booksexplorer.booksList.di;
 
 import com.paddyzab.booksexplorer.booksList.view.BooksListActivity;
+import com.paddyzab.booksexplorer.booksList.view.BooksListPresenter;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,8 @@ import dagger.Subcomponent;
 )
 public interface BooksListComponent {
 
-    BooksListActivity inject(BooksListActivity walletActivity);
+    BooksListActivity inject(BooksListActivity booksListActivity);
+
+    BooksListPresenter inject(BooksListPresenter booksListPresenter);
 }
 

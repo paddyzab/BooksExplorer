@@ -3,6 +3,10 @@ package com.paddyzab.booksexplorer.booksList.di;
 import com.paddyzab.booksexplorer.booksList.view.BooksAdapter;
 import com.paddyzab.booksexplorer.booksList.view.BooksListActivity;
 import com.paddyzab.booksexplorer.booksList.view.BooksListPresenter;
+import com.paddyzab.googlebooksapi.GoogleBooksService;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,14 +20,16 @@ public class BooksListModule {
        mBooksListActivity = booksListActivity;
     }
 
+    @Singleton
     @Provides
     BooksListActivity provideBooksListActivity() {
         return mBooksListActivity;
     }
 
     @Provides
-    BooksListPresenter provideBookListPresenter() {
-        return new BooksListPresenter(mBooksListActivity);
+    BooksListPresenter provideBookListPresenter(BooksListActivity booksListActivity,
+                                                GoogleBooksService googleBooksService) {
+        return new BooksListPresenter(booksListActivity, googleBooksService);
     }
 
     @Provides
