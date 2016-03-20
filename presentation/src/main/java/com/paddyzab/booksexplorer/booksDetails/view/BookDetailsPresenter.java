@@ -1,6 +1,6 @@
 package com.paddyzab.booksexplorer.booksDetails.view;
 
-import com.paddyzab.booksexplorer.common.presenter.Presenter;
+import com.paddyzab.booksexplorer.common.Presenter;
 
 public class BookDetailsPresenter implements Presenter {
 

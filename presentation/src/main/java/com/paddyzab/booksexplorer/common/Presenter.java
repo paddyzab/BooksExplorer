@@ -1,4 +1,4 @@
-package com.paddyzab.booksexplorer.common.presenter;
+package com.paddyzab.booksexplorer.common;
 
 public interface Presenter {
 

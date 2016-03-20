@@ -2,6 +2,9 @@ package com.paddyzab.booksexplorer.common;
 
 import android.app.Application;
 
+import com.paddyzab.googlebooksapi.GoogleBooksApiProvider;
+import com.paddyzab.googlebooksapi.GoogleBooksService;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -11,9 +14,11 @@ import dagger.Provides;
 public class AppModule {
 
     private final Application mApplication;
+    private final GoogleBooksApiProvider mGoogleBooksApiProvider;
 
     public AppModule(Application application) {
         mApplication = application;
+        mGoogleBooksApiProvider = new GoogleBooksApiProvider();
     }
 
     @Provides
@@ -26,5 +31,11 @@ public class AppModule {
     @Singleton
     public Intents provideIntents() {
         return new Intents();
+    }
+
+    @Provides
+    @Singleton
+    public GoogleBooksService provideGoogleBookService() {
+        return mGoogleBooksApiProvider.getBooksService();
     }
 }

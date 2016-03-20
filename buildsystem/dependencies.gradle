@@ -16,7 +16,8 @@ ext {
     butterKnifeVersion = '7.0.1'
     rxJavaVersion = '1.1.0'
     javaxVersion = '1.0'
-    androidSupportVersion = '23.1.1'
+    androidSupportVersion = '23.2.0'
+    retrofitVersion = "2.0.0"
 
     // Testing
     festAssertVersion = '1.1.1'
@@ -24,6 +25,11 @@ ext {
     espressoVersion = '2.2.1'
     androidTestingSupport = '0.4'
     jUnitVersion = '4.12'
+
+    commonTestDependencies = [
+            junit        : "junit:junit:${jUnitVersion}",
+            mockito      : "org.mockito:mockito-core:${mockitoVersion}"
+    ]
 
     presentationDependencies = [
             daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
@@ -34,16 +40,20 @@ ext {
             design         : "com.android.support:design:${androidSupportVersion}",
             rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
             rxAndroid      : "io.reactivex:rxandroid:${rxJavaVersion}",
-            javaxAnnotation: "javax.annotation:jsr250-api:${javaxVersion}",
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxVersion}"
     ]
 
     presentationTestDependencies = [
-            mockito      : "org.mockito:mockito-core:${mockitoVersion}",
             espresso     : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             supportRunner: "com.android.support.test:rules:${androidTestingSupport}",
             supportRules : "com.android.support.test:rules:${androidTestingSupport}",
-            supportAnnotations: "com.android.support:support-annotations:${androidSupportVersion}",
             festAssert   : "com.squareup.assertj:assertj-android:${festAssertVersion}",
-            junit        : "junit:junit:${jUnitVersion}",
+            supportAnnotations: "com.android.support:support-annotations:${androidSupportVersion}"
+    ]
+
+    googlebooksApiDependencies = [
+            retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitGson   : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
     ]
 }

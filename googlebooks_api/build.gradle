@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../buildsystem/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    def apiDependencies = rootProject.ext.googlebooksApiDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+
+    compile apiDependencies.retrofit
+    compile apiDependencies.retrofitGson
+    compile apiDependencies.retrofitRxJava
+
+    testCompile commonTestDependencies.junit
+    testCompile commonTestDependencies.mockito
+}

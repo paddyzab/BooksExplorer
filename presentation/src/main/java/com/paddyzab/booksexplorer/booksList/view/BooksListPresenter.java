@@ -1,8 +1,14 @@
 package com.paddyzab.booksexplorer.booksList.view;
 
-import com.paddyzab.booksexplorer.common.presenter.Presenter;
+import com.paddyzab.booksexplorer.common.Presenter;
 
 public class BooksListPresenter implements Presenter {
+
+    private final BooksListView mBooksListView;
+
+    public BooksListPresenter(BooksListView booksListView) {
+        mBooksListView = booksListView;
+    }
 
     @Override
     public void resume() {
@@ -17,5 +23,9 @@ public class BooksListPresenter implements Presenter {
     @Override
     public void destroy() {
 
+    }
+
+    public void openDetails() {
+//        mBooksListView.openBookDetails();
     }
 }

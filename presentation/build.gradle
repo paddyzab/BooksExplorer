@@ -68,6 +68,9 @@ android {
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+
+    compile project(':googlebooks_api')
 
     apt presentationDependencies.daggerCompiler
     compile presentationDependencies.dagger
@@ -79,13 +82,13 @@ dependencies {
     compile presentationDependencies.rxAndroid
     provided presentationDependencies.javaxAnnotation
 
-    testCompile presentationTestDependencies.junit
-    testCompile presentationTestDependencies.mockito
-    androidTestCompile presentationTestDependencies.mockito
+    testCompile commonTestDependencies.junit
+    testCompile commonTestDependencies.mockito
+    androidTestCompile commonTestDependencies.mockito
+    androidTestCompile presentationTestDependencies.festAssert
     androidTestCompile presentationTestDependencies.espresso
     androidTestCompile presentationTestDependencies.supportRunner
     androidTestCompile presentationTestDependencies.supportRules
-    androidTestCompile presentationTestDependencies.festAssert
     androidTestCompile presentationTestDependencies.supportAnnotations
 }
 
