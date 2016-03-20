@@ -9,5 +9,10 @@ import retrofit2.http.Query;
 public interface GoogleBooksService {
 
     @GET("volumes")
-    Call<ItemsResponse> listItems(@Query("q") String query);
+    Call<ItemsResponse> listItems(@Query("q") String query,
+                                  @Query("startIndex") int startIndex,
+                                  @Query("maxResults") int maxResults);
+
+    @GET("volumes/volumeId")
+    Call<ItemsResponse> singleItemById(@Query("volumeId") String volumeId);
 }

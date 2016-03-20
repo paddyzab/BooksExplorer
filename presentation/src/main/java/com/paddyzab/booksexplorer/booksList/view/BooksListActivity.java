@@ -34,14 +34,20 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     protected void openDetails() {
         mBooksListPresenter.openDetails();
 
-        Call<ItemsResponse> science = mGoogleBooksService.listItems("science");
+        int[] threshods = {0, 40, 80, 120};
+
+        for (int index : threshods) {
+            fetchItems(index);
+        }
+    }
+
+    private void fetchItems(int index) {
+        Call<ItemsResponse> science = mGoogleBooksService.listItems("science", index, 40);
         science.enqueue(new Callback<ItemsResponse>() {
             @Override
             public void onResponse(final Call<ItemsResponse> call, final Response<ItemsResponse>
                     response) {
                 Log.d(BooksListActivity.class.getSimpleName(), response.body().toString());
-                Log.d(BooksListActivity.class.getSimpleName(), String.valueOf(response.body()
-                        .items.length));
             }
 
             @Override
