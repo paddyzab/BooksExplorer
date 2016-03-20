@@ -1,6 +1,9 @@
 package com.paddyzab.booksexplorer.booksList.view;
 
+import android.net.LinkAddress;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.paddyzab.booksexplorer.R;
@@ -13,6 +16,7 @@ import com.paddyzab.googlebooksapi.models.ItemsResponse;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
@@ -30,15 +34,16 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     @Inject
     protected GoogleBooksService mGoogleBooksService;
 
+    @Inject
+    protected BooksAdapter mBooksAdapter;
+
+    @Bind(R.id.recyclerViewBooks)
+    protected RecyclerView mRecyclerViewBooks;
+
     @OnClick(R.id.buttonDetails)
     protected void openDetails() {
         mBooksListPresenter.openDetails();
-
-        int[] threshods = {0, 40, 80, 120};
-
-        for (int index : threshods) {
-            fetchItems(index);
-        }
+        fetchItems(0);
     }
 
     private void fetchItems(int index) {
@@ -47,7 +52,7 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
             @Override
             public void onResponse(final Call<ItemsResponse> call, final Response<ItemsResponse>
                     response) {
-                Log.d(BooksListActivity.class.getSimpleName(), response.body().toString());
+                mBooksAdapter.setBookItems(response.body().items);
             }
 
             @Override
@@ -62,6 +67,16 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_list);
         ButterKnife.bind(this);
+
+        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerViewBooks.setHasFixedSize(true);
+        mRecyclerViewBooks.setLayoutManager(layoutManager);
+        mRecyclerViewBooks.setAdapter(mBooksAdapter);
+    }
+
+    @Override
+    public void openBookDetails() {
+        mIntents.startBookDetailsActivity(this, "bookId");
     }
 
     @Override
@@ -70,10 +85,5 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
                 .getAppComponent()
                 .plus(new BooksListModule(this))
                 .inject(this);
-    }
-
-    @Override
-    public void openBookDetails() {
-        mIntents.startBookDetailsActivity(this, "bookId");
     }
 }

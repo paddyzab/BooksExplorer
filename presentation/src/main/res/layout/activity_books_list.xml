@@ -2,14 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:gravity="center"
               android:layout_height="match_parent">
 
     <Button
         android:id="@+id/buttonDetails"
         android:layout_width="match_parent"
         android:text="details"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewBooks"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

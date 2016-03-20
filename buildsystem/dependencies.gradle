@@ -18,6 +18,7 @@ ext {
     javaxVersion = '1.0'
     androidSupportVersion = '23.2.0'
     retrofitVersion = "2.0.0"
+    picassoVersion = "2.5.2"
 
     // Testing
     festAssertVersion = '1.1.1'
@@ -37,6 +38,8 @@ ext {
             butterKnife    : "com.jakewharton:butterknife:${butterKnifeVersion}",
             recyclerView   : "com.android.support:recyclerview-v7:${androidSupportVersion}",
             appcompat      : "com.android.support:appcompat-v7:${androidSupportVersion}",
+            cardView       : "com.android.support:cardview-v7:${androidSupportVersion}",
+            picasso        : "com.squareup.picasso:picasso:${picassoVersion}",
             design         : "com.android.support:design:${androidSupportVersion}",
             rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
             rxAndroid      : "io.reactivex:rxandroid:${rxJavaVersion}",

@@ -1,5 +1,6 @@
 package com.paddyzab.booksexplorer.booksList.di;
 
+import com.paddyzab.booksexplorer.booksList.view.BooksAdapter;
 import com.paddyzab.booksexplorer.booksList.view.BooksListActivity;
 import com.paddyzab.booksexplorer.booksList.view.BooksListPresenter;
 
@@ -23,5 +24,10 @@ public class BooksListModule {
     @Provides
     BooksListPresenter provideBookListPresenter() {
         return new BooksListPresenter(mBooksListActivity);
+    }
+
+    @Provides
+    BooksAdapter providesBooksAdapter() {
+        return new BooksAdapter();
     }
 }

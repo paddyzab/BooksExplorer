@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewBook"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/imageViewThumbnail"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="Thumbnail of a book"/>
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageViewThumbnail"
+                android:layout_toEndOf="@id/imageViewThumbnail"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                tools:text="Title placeholder"/>
+
+            <TextView
+                android:id="@+id/textViewAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTitle"
+                android:layout_toRightOf="@id/imageViewThumbnail"
+                android:layout_toEndOf="@id/imageViewThumbnail"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                tools:text="Author placeholder"/>
+
+            <TextView
+                android:id="@+id/textViewPublishDate"
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@id/imageViewThumbnail"
+                android:layout_toEndOf="@id/imageViewThumbnail"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                tools:text="Publish date placeholder"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/textViewPublisher"
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@id/imageViewThumbnail"
+                android:layout_toEndOf="@id/imageViewThumbnail"
+                android:textSize="12sp"
+                android:layout_above="@id/textViewPublishDate"
+                tools:text="Publisher placeholder"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
