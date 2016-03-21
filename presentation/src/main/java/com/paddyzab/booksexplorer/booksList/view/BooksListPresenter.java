@@ -41,7 +41,7 @@ public class BooksListPresenter implements Presenter {
     }
 
     public void fetchItems(int index) {
-        final Call<ItemsResponse> responseCall = mGoogleBooksService.listItems("responseCall",
+        final Call<ItemsResponse> responseCall = mGoogleBooksService.listItems("science",
                 index, 40);
         responseCall.enqueue(new Callback<ItemsResponse>() {
             @Override

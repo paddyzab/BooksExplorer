@@ -1,6 +1,7 @@
 package com.paddyzab.booksexplorer.booksList.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -83,7 +84,11 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     }
 
     private void loadThumbnail(final Book bookItem, final ImageView thumbnail) {
-        Picasso.with(mContext).load(bookItem.volumeInfo.imageLinks.thumbnail).into(thumbnail);
+        if (bookItem.volumeInfo.imageLinks != null) {
+            Picasso.with(mContext).load(bookItem.volumeInfo.imageLinks.thumbnail).into(thumbnail);
+        } else {
+            thumbnail.setImageBitmap(Bitmap.createBitmap(120, 120, Bitmap.Config.ARGB_8888));
+        }
     }
 
     public static class BooksViewHolder extends RecyclerView.ViewHolder {

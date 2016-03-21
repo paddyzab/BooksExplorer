@@ -1,7 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
 
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/imageViewThumbnail"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:contentDescription="Thumbnail of a front cover."/>
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageViewThumbnail"
+            android:layout_toRightOf="@id/imageViewThumbnail"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="Title Placeholder"/>
+
+        <TextView
+            android:id="@+id/textViewPublishDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/imageViewThumbnail"
+            android:layout_toRightOf="@id/imageViewThumbnail"
+            tools:text="Publish Date Placeholder"/>
+
+        <TextView
+            android:id="@+id/textViewPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/textViewPublishDate"
+            android:layout_toEndOf="@id/imageViewThumbnail"
+            android:layout_toRightOf="@id/imageViewThumbnail"
+            tools:text="Publisher Placeholder"/>
+
+        <TextView
+            android:id="@+id/textViewAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/textViewPublisher"
+            android:layout_toEndOf="@id/imageViewThumbnail"
+            android:layout_toRightOf="@id/imageViewThumbnail"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="Author Placeholder"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewPublishDate"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="Multiline \ntext description \nplaceholder."/>
+    </ScrollView>
 </LinearLayout>
