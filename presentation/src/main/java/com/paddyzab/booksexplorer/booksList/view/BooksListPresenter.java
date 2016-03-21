@@ -41,17 +41,18 @@ public class BooksListPresenter implements Presenter {
     }
 
     public void fetchItems(int index) {
-        Call<ItemsResponse> science = mGoogleBooksService.listItems("science", index, 40);
-        science.enqueue(new Callback<ItemsResponse>() {
+        final Call<ItemsResponse> responseCall = mGoogleBooksService.listItems("responseCall",
+                index, 40);
+        responseCall.enqueue(new Callback<ItemsResponse>() {
             @Override
             public void onResponse(final Call<ItemsResponse> call, final Response<ItemsResponse>
                     response) {
-               mBooksListView.populateItems(response.body().items);
+                mBooksListView.populateItems(response.body().items);
             }
 
             @Override
             public void onFailure(final Call<ItemsResponse> call, final Throwable t) {
-                Log.d(BooksListActivity.class.getSimpleName(), t.toString());
+                Log.d(BooksListPresenter.class.getSimpleName(), t.toString());
             }
         });
     }

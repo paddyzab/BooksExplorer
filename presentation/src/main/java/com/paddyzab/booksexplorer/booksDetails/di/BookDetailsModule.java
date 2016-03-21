@@ -2,10 +2,7 @@ package com.paddyzab.booksexplorer.booksDetails.di;
 
 import com.paddyzab.booksexplorer.booksDetails.view.BookDetailsActivity;
 import com.paddyzab.booksexplorer.booksDetails.view.BookDetailsPresenter;
-import com.paddyzab.booksexplorer.booksList.view.BooksListActivity;
 import com.paddyzab.googlebooksapi.GoogleBooksService;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

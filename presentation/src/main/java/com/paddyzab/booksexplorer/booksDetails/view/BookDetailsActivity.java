@@ -1,12 +1,14 @@
 package com.paddyzab.booksexplorer.booksDetails.view;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.paddyzab.booksexplorer.R;
 import com.paddyzab.booksexplorer.booksDetails.di.BookDetailsModule;
 import com.paddyzab.booksexplorer.common.BookExplorerApplication;
 import com.paddyzab.booksexplorer.common.InjectingActivity;
 import com.paddyzab.booksexplorer.common.Intents;
+import com.paddyzab.googlebooksapi.models.Book;
 
 import javax.inject.Inject;
 
@@ -32,8 +34,7 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
     @Override
     protected void onResume() {
         super.onResume();
-
-        mBookDetailsPresenter.resume();
+        mBookDetailsPresenter.fetchItem(mBookId);
     }
 
     @Override
@@ -41,6 +42,11 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
         super.onDestroy();
 
         mBookDetailsPresenter.destroy();
+    }
+
+    @Override
+    public void populateView(final Book item) {
+        Log.d(BookDetailsActivity.class.getSimpleName(), item.toString());
     }
 
     @Override
