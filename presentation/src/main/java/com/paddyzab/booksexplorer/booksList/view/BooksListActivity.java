@@ -3,6 +3,7 @@ package com.paddyzab.booksexplorer.booksList.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.paddyzab.booksexplorer.R;
 import com.paddyzab.booksexplorer.booksList.di.BooksListModule;
@@ -71,6 +72,11 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     @Override
     public void openBookDetails(final String itemId) {
         mIntents.startBookDetailsActivity(this, itemId);
+    }
+
+    @Override
+    public void showError(final String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override

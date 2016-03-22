@@ -73,13 +73,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
         return mBooks.size();
     }
 
-    private void populateAuthor(final Book bookItem, final TextView author) {
+    private void populateAuthor(final Book bookItem, final TextView textView) {
         if (bookItem.volumeInfo.authors != null) {
-            author.setText(bookItem.volumeInfo.authors[0]);
-            author.setTextColor(Color.GRAY);
+            textView.setText(bookItem.volumeInfo.authors[0]);
+            textView.setTextColor(Color.GRAY);
         } else {
-            author.setText("No author data available.");
-            author.setTextColor(Color.RED);
+            textView.setText("No author data available.");
+            textView.setTextColor(Color.RED);
         }
     }
 

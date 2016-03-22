@@ -1,8 +1,10 @@
 package com.paddyzab.booksexplorer.booksDetails.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.paddyzab.booksexplorer.R;
 import com.paddyzab.booksexplorer.booksDetails.di.BookDetailsModule;
@@ -67,11 +69,16 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
     @Override
     public void populateView(final Book item) {
         Picasso.with(this).load(item.volumeInfo.imageLinks.thumbnail).into(mImageViewThumbnail);
+        populateAuthor(item, mTextViewAuthor);
         mTextViewTitle.setText(item.volumeInfo.title);
-        mTextViewAuthor.setText(item.volumeInfo.authors[0]);
         mTextViewPublisher.setText(item.volumeInfo.publisher);
         mTextViewPublisherDate.setText(item.volumeInfo.publishedDate);
         mTextViewDescription.setText(item.volumeInfo.description);
+    }
+
+    @Override
+    public void showError(final String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -80,5 +87,15 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
                 .getAppComponent()
                 .plus(new BookDetailsModule(this))
                 .inject(this);
+    }
+
+    private void populateAuthor(final Book bookItem, final TextView textView) {
+        if (bookItem.volumeInfo.authors != null) {
+            textView.setText(bookItem.volumeInfo.authors[0]);
+            textView.setTextColor(Color.GRAY);
+        } else {
+            textView.setText("No author data available.");
+            textView.setTextColor(Color.RED);
+        }
     }
 }

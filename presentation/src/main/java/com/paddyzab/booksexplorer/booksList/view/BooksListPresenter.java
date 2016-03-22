@@ -1,7 +1,5 @@
 package com.paddyzab.booksexplorer.booksList.view;
 
-import android.util.Log;
-
 import com.paddyzab.booksexplorer.common.Presenter;
 import com.paddyzab.googlebooksapi.GoogleBooksService;
 import com.paddyzab.googlebooksapi.models.ItemsResponse;
@@ -53,7 +51,7 @@ public class BooksListPresenter implements Presenter {
 
             @Override
             public void onFailure(final Call<ItemsResponse> call, final Throwable t) {
-                Log.d(BooksListPresenter.class.getSimpleName(), t.toString());
+                mBooksListView.showError(t.getMessage());
             }
         });
     }
