@@ -17,7 +17,8 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class BooksListActivity extends InjectingActivity implements BooksListView, BooksAdapter.OnCardClickedListener {
+public class BooksListActivity extends InjectingActivity implements BooksListView, BooksAdapter
+        .OnCardClickedListener {
 
     @Inject
     protected Intents mIntents;
@@ -48,19 +49,7 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
                 mBooksListPresenter.fetchItems(mBooksAdapter.getItemCount());
             }
         });
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mBooksListPresenter.resume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mBooksListPresenter.pause();
+        mBooksListPresenter.fetchItems(0);
     }
 
     @Override

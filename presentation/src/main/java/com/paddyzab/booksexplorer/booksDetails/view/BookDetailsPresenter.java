@@ -12,9 +12,9 @@ import retrofit2.Response;
 
 public class BookDetailsPresenter implements Presenter {
 
-
     private final BookDetailsView mDetailsView;
     private final GoogleBooksService mGoogleBooksService;
+    private Call<Book> mResponseCall;
 
     public BookDetailsPresenter(final BookDetailsView detailsView, final GoogleBooksService
             googleBooksService) {
@@ -34,12 +34,12 @@ public class BookDetailsPresenter implements Presenter {
 
     @Override
     public void destroy() {
-        // nop
+        mResponseCall.cancel();
     }
 
     public void fetchItem(final String itemId) {
-        final Call<Book> responseCall = mGoogleBooksService.singleItemById(itemId);
-        responseCall.enqueue(new Callback<Book>() {
+        mResponseCall = mGoogleBooksService.singleItemById(itemId);
+        mResponseCall.enqueue(new Callback<Book>() {
             @Override
             public void onResponse(final Call<Book> call, final Response<Book>
                     response) {

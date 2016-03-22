@@ -1,7 +1,6 @@
 package com.paddyzab.booksexplorer.booksDetails.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,12 +50,12 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
 
         final Bundle bundleExtra = getIntent().getBundleExtra(Intents.BOOK_DETAILS_ARGS);
         mBookId = bundleExtra.getString(Intents.BOOK_ID);
+        mBookDetailsPresenter.fetchItem(mBookId);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mBookDetailsPresenter.fetchItem(mBookId);
     }
 
     @Override

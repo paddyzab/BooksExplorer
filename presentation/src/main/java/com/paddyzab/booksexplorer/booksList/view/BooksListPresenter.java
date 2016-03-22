@@ -14,6 +14,7 @@ public class BooksListPresenter implements Presenter {
 
     private final BooksListView mBooksListView;
     private final GoogleBooksService mGoogleBooksService;
+    private Call<ItemsResponse> mResponseCall;
 
     public BooksListPresenter(final BooksListView booksListView,
                               final GoogleBooksService googleBooksService) {
@@ -23,17 +24,17 @@ public class BooksListPresenter implements Presenter {
 
     @Override
     public void resume() {
-        fetchItems(0);
+        // nop
     }
 
     @Override
     public void pause() {
-
+        // nop
     }
 
     @Override
     public void destroy() {
-
+        mResponseCall.cancel();
     }
 
     public void openDetails(final String itemId) {
@@ -41,9 +42,9 @@ public class BooksListPresenter implements Presenter {
     }
 
     public void fetchItems(int index) {
-        final Call<ItemsResponse> responseCall = mGoogleBooksService.listItems("science",
+        mResponseCall = mGoogleBooksService.listItems("science",
                 index, 40);
-        responseCall.enqueue(new Callback<ItemsResponse>() {
+        mResponseCall.enqueue(new Callback<ItemsResponse>() {
             @Override
             public void onResponse(final Call<ItemsResponse> call, final Response<ItemsResponse>
                     response) {
