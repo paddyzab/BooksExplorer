@@ -15,7 +15,7 @@ import com.paddyzab.googlebooksapi.models.Book;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BooksListActivity extends InjectingActivity implements BooksListView, BooksAdapter
@@ -30,7 +30,7 @@ public class BooksListActivity extends InjectingActivity implements BooksListVie
     @Inject
     protected BooksAdapter mBooksAdapter;
 
-    @Bind(R.id.recyclerViewBooks)
+    @BindView(R.id.recyclerViewBooks)
     protected RecyclerView mRecyclerViewBooks;
 
     @Override

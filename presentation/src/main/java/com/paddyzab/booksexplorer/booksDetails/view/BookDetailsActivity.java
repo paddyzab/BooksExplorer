@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BookDetailsActivity extends InjectingActivity implements BookDetailsView {
@@ -26,22 +26,22 @@ public class BookDetailsActivity extends InjectingActivity implements BookDetail
 
     private String mBookId;
 
-    @Bind(R.id.imageViewThumbnail)
+    @BindView(R.id.imageViewThumbnail)
     protected ImageView mImageViewThumbnail;
 
-    @Bind(R.id.textViewTitle)
+    @BindView(R.id.textViewTitle)
     protected TextView mTextViewTitle;
 
-    @Bind(R.id.textViewAuthor)
+    @BindView(R.id.textViewAuthor)
     protected TextView mTextViewAuthor;
 
-    @Bind(R.id.textViewPublisher)
+    @BindView(R.id.textViewPublisher)
     protected TextView mTextViewPublisher;
 
-    @Bind(R.id.textViewPublishDate)
+    @BindView(R.id.textViewPublishDate)
     protected TextView mTextViewPublisherDate;
 
-    @Bind(R.id.textViewDescription)
+    @BindView(R.id.textViewDescription)
     protected TextView mTextViewDescription;
 
     @Override

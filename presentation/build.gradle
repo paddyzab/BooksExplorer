@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'kotlin-android'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -15,6 +15,7 @@ android {
         versionName globalConfiguration.getAt("androidVersionName")
         testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
         testApplicationId globalConfiguration.getAt("testApplicationId")
+        multiDexEnabled true
     }
 
     compileOptions {
@@ -58,6 +59,10 @@ android {
         }
     }
 
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+    }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -70,11 +75,12 @@ dependencies {
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
     def commonTestDependencies = rootProject.ext.commonTestDependencies
 
-    compile project(':googlebooks_api')
+    implementation project(':googlebooks_api')
 
-    apt presentationDependencies.daggerCompiler
     compile presentationDependencies.dagger
-    compile presentationDependencies.butterKnife
+    annotationProcessor presentationDependencies.daggerCompiler
+    compile presentationDependencies.butterknife
+    annotationProcessor presentationDependencies.butterknifeCompiler
     compile presentationDependencies.recyclerView
     compile presentationDependencies.cardView
     compile presentationDependencies.picasso
@@ -82,6 +88,8 @@ dependencies {
     compile presentationDependencies.design
     compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
+    compile presentationDependencies.multidex
+    compile presentationDependencies.multidexIstrumentation
     provided presentationDependencies.javaxAnnotation
 
     testCompile commonTestDependencies.junit
@@ -92,5 +100,9 @@ dependencies {
     androidTestCompile presentationTestDependencies.supportRunner
     androidTestCompile presentationTestDependencies.supportRules
     androidTestCompile presentationTestDependencies.supportAnnotations
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
 
