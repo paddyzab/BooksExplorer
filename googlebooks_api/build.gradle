@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdk")
+    buildToolsVersion globalConfiguration.getAt("androidBuildTools")
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

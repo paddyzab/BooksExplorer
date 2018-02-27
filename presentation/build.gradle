@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdk")
+    buildToolsVersion globalConfiguration.getAt("androidBuildTools")
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        minSdkVersion globalConfiguration.getAt("androidMinSdk")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdk")
 
         applicationId globalConfiguration.getAt("androidApplicationId")
         versionCode globalConfiguration.getAt("androidVersionCode")
@@ -57,10 +57,6 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-    }
-
-    testOptions {
-        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
 
     buildTypes {

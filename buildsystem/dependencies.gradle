@@ -9,65 +9,64 @@ allprojects {
 
 ext {
     // Android
-    androidBuildToolsVersion = "26.0.2"
-    androidMinSdkVersion = 24
-    androidTargetSdkVersion = 26
-    androidCompileSdkVersion = 26
+    androidBuildTools = "26.0.2"
+    androidMinSdk = 24
+    androidTargetSdk = 26
+    androidCompileSdk = 26
 
     // Libraries
-    daggerVersion = '2.0.2'
-    butterKnifeVersion = '8.8.1'
-    rxJavaVersion = '1.1.0'
-    javaxVersion = '1.0'
-    androidSupportVersion = '27.0.2'
-    retrofitVersion = "2.0.0"
-    picassoVersion = "2.5.2"
+    dagger = '2.0.2'
+    butterKnife = '8.8.1'
+    rxJava = '1.1.0'
+    javax = '1.0'
+    support = '27.0.2'
+    retrofit = "2.0.0"
+    picasso = "2.5.2"
 
     // Testing
-    festAssertVersion = '1.1.1'
-    mockitoVersion = '1.10.19'
-    espressoVersion = '2.2.1'
-    androidTestingSupport = '0.4'
-    jUnitVersion = '4.12'
+    festAssert = '1.1.1'
+    mockito = '2.10.0'
+    espresso = '2.2.2'
+    testingSupport = '0.4'
+    jUnit = '4.12'
     multidexing = '1.0.2'
     orchestrator = '1.0.2'
 
     commonTestDependencies = [
-            junit        : "junit:junit:${jUnitVersion}",
-            mockito      : "org.mockito:mockito-core:${mockitoVersion}"
+            junit        : "junit:junit:${jUnit}",
+            mockito      : "org.mockito:mockito-core:${mockito}"
     ]
 
     presentationDependencies = [
-            daggerCompiler         : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger                 : "com.google.dagger:dagger:${daggerVersion}",
-            butterknife            : "com.jakewharton:butterknife:${butterKnifeVersion}",
-            butterknifeCompiler    : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
-            recyclerView           : "com.android.support:recyclerview-v7:${androidSupportVersion}",
-            appcompat              : "com.android.support:appcompat-v7:${androidSupportVersion}",
-            cardView               : "com.android.support:cardview-v7:${androidSupportVersion}",
-            picasso                : "com.squareup.picasso:picasso:${picassoVersion}",
-            design                 : "com.android.support:design:${androidSupportVersion}",
-            rxJava                 : "io.reactivex:rxjava:${rxJavaVersion}",
-            rxAndroid              : "io.reactivex:rxandroid:${rxJavaVersion}",
-            javaxAnnotation        : "javax.annotation:jsr250-api:${javaxVersion}",
+            daggerCompiler         : "com.google.dagger:dagger-compiler:${dagger}",
+            dagger                 : "com.google.dagger:dagger:${dagger}",
+            butterknife            : "com.jakewharton:butterknife:${butterKnife}",
+            butterknifeCompiler    : "com.jakewharton:butterknife-compiler:${butterKnife}",
+            recyclerView           : "com.android.support:recyclerview-v7:${support}",
+            appcompat              : "com.android.support:appcompat-v7:${support}",
+            cardView               : "com.android.support:cardview-v7:${support}",
+            picasso                : "com.squareup.picasso:picasso:${picasso}",
+            design                 : "com.android.support:design:${support}",
+            rxJava                 : "io.reactivex:rxjava:${rxJava}",
+            rxAndroid              : "io.reactivex:rxandroid:${rxJava}",
+            javaxAnnotation        : "javax.annotation:jsr250-api:${javax}",
             multidex               :"com.android.support:multidex:${multidexing}",
             multidexIstrumentation :"com.android.support:multidex-instrumentation:${multidexing}",
     ]
 
     presentationTestDependencies = [
-            espresso           : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-            supportRunner      : "com.android.support.test:rules:${androidTestingSupport}",
-            supportRules       : "com.android.support.test:rules:${androidTestingSupport}",
-            festAssert         : "com.squareup.assertj:assertj-android:${festAssertVersion}",
-            supportAnnotations : "com.android.support:support-annotations:${androidSupportVersion}",
-            multidex           :"com.android.support:multidex:${multidexing}",
-//            testRunner: "com.android.support.test:runner:${orchestrator}",
-//            orchestrator: "com.android.support.test:orchestrator:${orchestrator}"
+            espresso           : "com.android.support.test.espresso:espresso-core:${espresso}",
+            supportRunner      : "com.android.support.test:rules:${testingSupport}",
+            supportRules       : "com.android.support.test:rules:${testingSupport}",
+            festAssert         : "com.squareup.assertj:assertj-android:${festAssert}",
+            supportAnnotations : "com.android.support:support-annotations:${support}",
+            multidex           : "com.android.support:multidex:${multidexing}",
+            testCompile        : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     ]
 
     googlebooksApiDependencies = [
-            retrofit       : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitGson   : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
+            retrofit       : "com.squareup.retrofit2:retrofit:${retrofit}",
+            retrofitGson   : "com.squareup.retrofit2:converter-gson:${retrofit}",
+            retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava:${retrofit}"
     ]
 }

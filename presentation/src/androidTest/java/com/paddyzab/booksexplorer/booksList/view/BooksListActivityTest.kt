@@ -10,11 +10,11 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class BooksListActivityTest {
 
-    @Rule
+    @Rule @JvmField
     val activityRule = ActivityTestRule<BooksListActivity>(BooksListActivity::class.java)
 
     @Test
-    fun displaysList() {
-        Thread.sleep(10000)
+    fun `displays_list`() {
+        Thread.sleep(1000)
     }
 }
