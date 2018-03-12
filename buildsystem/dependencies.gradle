@@ -20,7 +20,7 @@ ext {
     rxJava = '1.1.0'
     javax = '1.0'
     support = '27.0.2'
-    retrofit = "2.0.0"
+    retrofit = "2.3.0"
     picasso = "2.5.2"
 
     // Testing
@@ -34,7 +34,8 @@ ext {
 
     commonTestDependencies = [
             junit        : "junit:junit:${jUnit}",
-            mockito      : "org.mockito:mockito-core:${mockito}"
+            mockito      : "org.mockito:mockito-core:${mockito}",
+            mockServer   : "com.squareup.retrofit2:retrofit-mock:${retrofit}"
     ]
 
     presentationDependencies = [
@@ -67,6 +68,6 @@ ext {
     googlebooksApiDependencies = [
             retrofit       : "com.squareup.retrofit2:retrofit:${retrofit}",
             retrofitGson   : "com.squareup.retrofit2:converter-gson:${retrofit}",
-            retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava:${retrofit}"
+            retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava:${retrofit}",
     ]
 }

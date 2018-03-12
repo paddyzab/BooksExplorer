@@ -27,4 +27,8 @@ public class BookExplorerApplication extends Application {
     public AppComponent getAppComponent() {
         return mAppComponent;
     }
+
+    public void setAppComponent(AppComponent component) {
+        mAppComponent = component;
+    }
 }

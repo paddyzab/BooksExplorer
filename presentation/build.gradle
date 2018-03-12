@@ -96,6 +96,7 @@ dependencies {
     androidTestCompile presentationTestDependencies.supportRunner
     androidTestCompile presentationTestDependencies.supportRules
     androidTestCompile presentationTestDependencies.supportAnnotations
+    androidTestCompile commonTestDependencies.mockServer
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
